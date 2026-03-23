@@ -11,6 +11,17 @@ export default function SearchExample1() {
 			.catch((err) => console.error('Error during cities loading:', err));
 	}
 
+	async function postInformations(token, obj) {
+		const res = await fetch('https://example.tld/my/api/route', {
+			body: JSON.stringify(obj),
+			method: 'POST',
+			headers: {
+				'Authorization': `Bearer ${token}`,
+				'Content-Type': 'application/json'
+			}
+		});
+	}
+
 	// POST/PUT/DELETE, ou bien, un GET "complexe"
 	async function search() {
 		const res = await fetch(`https://geo.api.gouv.fr/communes?codePostal=${postalCode}`);
