@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
 
-export default function SearchExample1() {
-	const [postalCode, setPostalCode] = useState('');
-	const [result, setResult] = useState([])
+function useCities(postalCode) {
+	const [results, setResults] = useState([])
 
 	// A privilegier pour du GET
 	useEffect(() => {
 		async function fetchCities() {
 			const response = await fetch(`https://geo.api.gouv.fr/communes?codePostal=${postalCode}`);
 			const data = await response.json();
-			setResult(data);
+			setResults(data);
 		}
 
 		if (postalCode.length === 5) {
@@ -17,6 +16,13 @@ export default function SearchExample1() {
 			return () => clearTimeout(timeoutId);
 		}
 	}, [postalCode]);
+
+	return results;
+}
+
+export default function SearchExample2() {
+	const [postalCode, setPostalCode] = useState('');
+	const result = useCities(postalCode);
 
 	return (
 		<>
