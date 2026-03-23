@@ -16,6 +16,12 @@ export default function Counter() {
 				onClick={() => setCounter((currCount) => currCount + 1)}>
 				count is {counter}
 			</button>
+
+			<input
+				type="text"
+				onChange={(e) => console.log(e.target.value)}
+				placeholder="test"
+			/>
 		</>
 	);
 }
