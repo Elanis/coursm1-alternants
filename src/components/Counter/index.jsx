@@ -1,19 +1,20 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
+import { CounterContext } from '../../context/CounterContext';
 import './index.css';
 
 export default function Counter() {
-	const [count, setCount] = useState(0);
+	const { counter, setCounter } = useContext(CounterContext)
 
 	useEffect(() => {
-		document.title = `Counter ${count}`;
-	}, [count]);
+		document.title = `Counter ${counter}`;
+	}, [counter]);
 
 	return (
 		<>
 			<button
 				className="counter-button"
-				onClick={() => setCount((currCount) => currCount + 1)}>
-				count is {count}
+				onClick={() => setCounter((currCount) => currCount + 1)}>
+				count is {counter}
 			</button>
 		</>
 	);

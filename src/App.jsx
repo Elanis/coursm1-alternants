@@ -6,13 +6,15 @@ import Home from './routes/Home';
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route element={<Layout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/contact" element={<Contact />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <CounterContextProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<Layout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/contact" element={<Contact />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </CounterContextProvider>
   )
 }
