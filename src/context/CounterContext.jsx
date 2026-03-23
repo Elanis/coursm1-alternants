@@ -1,13 +1,19 @@
-import { createContext, useCallback, useState } from 'react';
+import { createContext, useCallback, useEffect, useState } from 'react';
 
 export const CounterContext = createContext(null);
 
 export default function CounterContextProvider({ children }) {
-	const [counter, setCounter] = useState(0);
+	const [counter, setCounter] = useState(
+		Number.parseInt(localStorage.counter, 10) || 0
+	);
 
 	const increment = useCallback(() => {
 		setCounter((oldCounter) => oldCounter + 1);
 	}, [setCounter]);
+
+	useEffect(() => {
+		localStorage.counter = counter;
+	}, [counter]);
 
 	return (
 		<CounterContext.Provider value={{
