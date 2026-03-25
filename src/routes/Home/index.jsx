@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
 import Counter from "../../components/Counter";
 
 export default function Home() {
@@ -19,6 +20,7 @@ export default function Home() {
 			isActive: false
 		}
 	], []);
+	const { t } = useTranslation();
 
 	if (data.length === 0) {
 		return (<span>J'ai pas de données</span>);
@@ -26,7 +28,7 @@ export default function Home() {
 
 	return (
 		<>
-			<span>Coucou!</span>
+			<span>{t('home:welcome-react')}</span>
 			<Counter />
 			<ul>
 				{data.map((item) =>
