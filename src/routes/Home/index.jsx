@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import Counter from "../../components/Counter";
+import Welcome from "../../components/Welcome";
 
 export default function Home() {
 	const data = useMemo(() => [
@@ -30,6 +31,7 @@ export default function Home() {
 		<>
 			<span>{t('home:welcome-react')}</span>
 			<Counter />
+			<Welcome name={'Axel'} />
 			<ul>
 				{data.map((item) =>
 					<li key={item.id}>
